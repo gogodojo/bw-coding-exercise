@@ -1,0 +1,34 @@
+{
+  "name": "brightwheel-coding-exercise",
+  "version": "0.0.1",
+  "description": "A node.js web service that proxies send-email requests to a set of back-end email delivery services",
+  "main": "brightwheel.emailservice.app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "clean": "rimraf node_modules",
+    "test": "mocha --recursive",
+    "test:watch": "npm test -- --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gogodojo/bw-coding-exercise.git"
+  },
+  "author": "gogodojo (JR)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/gogodojo/bw-coding-exercise/issues"
+  },
+  "homepage": "https://github.com/gogodojo/bw-coding-exercise#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^4.0.0",
+    "mocha": "^5.0.5",
+    "rimraf": "^2.6.2"
+  },
+  "dependencies": {
+    "dotenv-safe": "^5.0.1",
+    "express": "^4.16.3",
+    "morgan": "^1.9.0",
+    "request": "^2.85.0"
+  }
+}

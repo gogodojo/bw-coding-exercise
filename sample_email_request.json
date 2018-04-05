@@ -1,0 +1,8 @@
+{
+ "to": "jeffrinkmail@gmail.com",
+ "to_name": "Mr. Fake",
+ "from": "noreply@mybrightwheel.com",
+ "from_name": "Brightwheel",
+ "subject": "A Message from Brightwheel",
+ "body": "<h1>Your Bill</h1><p>$10</p>"
+}
