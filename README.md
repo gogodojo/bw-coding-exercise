@@ -38,9 +38,9 @@ It is expected that you provide your own credentials to use/test this applicatio
 ### Switching Providers
 To switch from one back-end email service provider to the other:
 
-    1. Kill/stop/interrupt any running server.
-    1. Modify the environment variable "BW_MAILER" (or in the .env file) to use to the new provider ("sendgrid" or "mailgun").
-    1. Restart/redeploy and verify the server as above.
+    * Kill/stop/interrupt any running server.
+    * Modify the environment variable "BW_MAILER" (or in the .env file) to use to the new provider ("sendgrid" or "mailgun").
+    * Restart/redeploy and verify the server as above.
 
 ### Web Service Overview
 
