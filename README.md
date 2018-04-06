@@ -35,15 +35,14 @@ It is expected that you provide your own credentials to use/test this applicatio
         * Expect: to receive an email at the "to" address with the content, subject, and "from" values specified
             * NOTE: the email may be tagged as "spam" by your email service provider, so please check *all* your email folders
         * Expect: an error if any required field was missing, empty, or if the service is down or rejects your credentials
-* For example, to send the sample in file ```./sample_email_request.json```:```
-curl -X POST -H "Content-Type: application/json" --data "@sample_email_request.json" http://localhost:3000/email
-```
+* For example, to send the sample in file ```./sample_email_request.json``` using curl:
+    * ```curl -X POST -H "Content-Type: application/json" --data "@sample_email_request.json" http://localhost:3000/email```
 
 ### Switching Services
 To switch from one back-end email service provider to the other:
-* Kill/stop/interrupt any running server.
-* Modify the environment variable "BW_MAILER" (or in the .env file) to use to the new provider ("sendgrid" or "mailgun").
-* Restart/redeploy and verify the server as above.
+1. Kill/stop/interrupt any running server.
+1. Set environment variable "BW_MAILER" (or in the .env file) to the new service ("sendgrid" or "mailgun").
+1. Restart/redeploy and verify the server as above.
 
 ### Web Service Overview
 
@@ -60,20 +59,10 @@ To switch from one back-end email service provider to the other:
         * Status 500 and body message "Unable to process your request..." if unsuccessful for any reason.
 
 ### Design & Implementation Considerations
-* This exercise was well-suited to a Node.js implementation as
-there are no CPU-intensive blocking operations, the back-end services are
-asynchronous, the server is ultimately scalable, and the language and
-frameworks are ubiquitous.
-* The email validation routine is very naive and biased towards delegating
-email validation to the email service providers (who, ultimately, are probably more likely
-to statically validate emails much more thoroughly than the caller).
-* Converting an HTML document (email message) to "plain text" is actually a very deep and indefinite problem.  
-Converting every possible embedded span, line break, empty element, and so on could potentially
-involve an extensive/massive transformational rule set.  I've employed a very rudimentary
-solution, but there are likely very much improved solutions in the open-source community.
-* This service *should* automatically failover to alternative service providers automatically
-and *try* to service the end-user's request.  Implementing this would involve (potentially) traversing a
-directed graph of failover services until the request was ultimately satisfied or all alternatives were exhausted.
+* This exercise was well-suited to a Node.js implementation as there are no CPU-intensive blocking operations, the back-end services are asynchronous, the server is ultimately scalable, and the language and frameworks are ubiquitous.
+* The email validation routine is very naive and biased towards delegating email validation to the email service providers (who, ultimately, are probably more likely to statically validate emails much more thoroughly than the caller).
+* Converting an HTML document (email message) to "plain text" is actually a very deep and indefinite problem.  Converting every possible embedded span, line break, empty element, and so on could potentially involve an extensive/massive transformational rule set.  I've employed a very rudimentary solution, but there are likely very much improved solutions in the open-source community.
+* This service *should* automatically failover to alternative service providers automatically and *try* to service the end-user's request.  Implementing this would involve iterating through a set of failover services until the request was ultimately satisfied or all alternatives were exhausted.
 
 ### Unmentionables
 * Static types (TypeScript, Flow, etc.)
@@ -81,4 +70,3 @@ directed graph of failover services until the request was ultimately satisfied o
 * Complete integration tests
 * Prod-ready exception handling
 * Prod-ready logging and dashboards
-* Code reviews
