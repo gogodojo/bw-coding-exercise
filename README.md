@@ -67,13 +67,13 @@ to statically validate emails much more thoroughly than the caller).
 * Converting an HTML document (email message) to "plain text" is actually a very deep and indefinite problem.  
 Converting every possible embedded span, line break, empty element, and so on could potentially
 involve an extensive/massive transformational rule set.  I've employed a very rudimentary
-solution, but there are likely very much improved open-source solutions in the open-source community.
+solution, but there are likely very much improved solutions in the open-source community.
 * This service *should* automatically failover to alternative service providers automatically
 and *try* to service the end-user's request.  Implementing this would involve (potentially) traversing a
-directed graph of failover services until the request was ultimately satisfied or all services were exhausted.
+directed graph of failover services until the request was ultimately satisfied or all alternatives were exhausted.
 
 ### Unmentionables
-* Missing typings (TypeScript, Flow, etc.)
+* Static types (TypeScript, Flow, etc.)
 * Complete unit tests
 * Complete integration tests
 * Prod-ready exception handling
