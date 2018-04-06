@@ -1,12 +1,12 @@
 # Brightwheel Full Stack Exercise
 
 Goal:
-"In order to prevent downtime during an email service provider outage, you’re tasked with creating a service that provides an abstraction between two different email service providers. This way, if one of the services goes down, you can quickly failover to a different provider without affecting your customers."  (see the full problem statement here)
+"In order to prevent downtime during an email service provider outage, you’re tasked with creating a service that provides an abstraction between two different email service providers. This way, if one of the services goes down, you can quickly failover to a different provider without affecting your customers."
 
 ## Getting Started
 
 ### Sign Up
-This software ultimately integrates with external providers (MailGun and SendGrid) which require authenticated access to their services.  To proceed, it is necessary to establish user accounts (and keys) with these providers. Both offer free options for experimentation or testing.  You'll need the API keys and other details for each to configure this software.
+This software ultimately integrates with external providers (MailGun and SendGrid) which require authenticated access to their services.  To proceed, it is necessary to establish user accounts (and API keys) with these providers. Both offer sandboxed free options for experimentation or testing.  You'll need the API keys, sandbox domain names, and other details for each to configure this software.
 
 ### Install
 * Install node.js if not already installed.
@@ -32,6 +32,7 @@ It is expected that you provide your own credentials to use/test this applicatio
     * Submit a POST request to ```localhost:3000/email``` with a valid JSON request
         * Expect: a 200-300 response code with "OK" message
         * Expect: to receive an email at the "to" address with the content, subject, and "from" values specified
+            * NOTE: the email may be tagged as "spam" by your email service provider, so please check *all* your email folders
         * Expect: an error if any required field was missing, empty, or if the service is down or rejects your credentials
 
 ### Switching Providers
