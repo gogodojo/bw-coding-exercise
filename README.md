@@ -21,6 +21,7 @@ It is expected that you provide your own credentials to use/test this applicatio
     * host process environment variables (as in a shell, Heroku, AWS, etc)
     * a ```.env``` file (see model ```.env.example``` file)
 * Copy ```.env.example``` to ```.env``` and edit:
+    * Specify which service to use (BW_MAILER).
     * Fill in the required mailgun and sendmail details (API keys, domain names, etc.).
 
 ### Start/Run Web Server Application
@@ -34,13 +35,15 @@ It is expected that you provide your own credentials to use/test this applicatio
         * Expect: to receive an email at the "to" address with the content, subject, and "from" values specified
             * NOTE: the email may be tagged as "spam" by your email service provider, so please check *all* your email folders
         * Expect: an error if any required field was missing, empty, or if the service is down or rejects your credentials
+* For example, to send the sample in file ```./sample_email_request.json```:```
+curl -X POST -H "Content-Type: application/json" --data "@sample_email_request.json" http://localhost:3000/email
+```
 
-### Switching Providers
+### Switching Services
 To switch from one back-end email service provider to the other:
-
-    * Kill/stop/interrupt any running server.
-    * Modify the environment variable "BW_MAILER" (or in the .env file) to use to the new provider ("sendgrid" or "mailgun").
-    * Restart/redeploy and verify the server as above.
+* Kill/stop/interrupt any running server.
+* Modify the environment variable "BW_MAILER" (or in the .env file) to use to the new provider ("sendgrid" or "mailgun").
+* Restart/redeploy and verify the server as above.
 
 ### Web Service Overview
 
